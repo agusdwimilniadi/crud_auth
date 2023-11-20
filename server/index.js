@@ -5,9 +5,10 @@ const express = require('express');
 const { generateToken, authenticateToken } = require('./lib/generateToken');
 const app = express();
 const port = 9001;
+const cors = require('cors');
 
 const prisma = new PrismaClient();
-
+app.use(cors());
 app.use(express.json());
 // AUTH
 app.post('/api/register', async (req, res) => {

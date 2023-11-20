@@ -1,10 +1,11 @@
 import { AuthProvider } from 'react-auth-kit';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Home from './pages/Home';
 export default function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <div className="text-3xl underline">Home</div>,
+      element: <Home />,
     },
   ]);
   return (
