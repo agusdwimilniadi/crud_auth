@@ -1,19 +1,13 @@
-import { instance } from '../../utils/instance';
+import Layout from '../Layout';
+import Jumbotron from './child/Jumbotron';
+import NewsList from './child/NewsList';
 
 const Home = () => {
-  const fetchData = async () => {
-    try {
-      await instance.get('blog').then((res) => {
-        console.log(res);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
-    <div className="text-center underline">
-      <button onClick={fetchData}>Button test</button>
-    </div>
+    <Layout>
+      <Jumbotron />
+      <NewsList />
+    </Layout>
   );
 };
 
