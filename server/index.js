@@ -133,6 +133,36 @@ app.get('/api/blog', async (req, res) => {
     });
   }
 });
+app.get('/api/blog/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const blog = await prisma.blog.findUnique({
+      where: {
+        id: id,
+      },
+      select: {
+        id: true,
+        title: true,
+        content: true,
+        image: true,
+        author: {
+          select: {
+            name: true,
+          },
+        },
+      },
+    });
+    res.status(200).json({
+      success: true,
+      data: blog,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+});
 app.post('/api/blog', authenticateToken, async (req, res) => {
   const { title, content, image } = req.body;
   if (!title || !content || !image) {
