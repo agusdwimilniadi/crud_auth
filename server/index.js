@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const express = require('express');
 const { generateToken, authenticateToken } = require('./lib/generateToken');
 const app = express();
-const port = 9001;
+const port = 5000;
 const cors = require('cors');
 
 const prisma = new PrismaClient();
